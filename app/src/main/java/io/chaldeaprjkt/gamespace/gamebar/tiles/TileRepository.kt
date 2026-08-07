@@ -359,6 +359,13 @@ class TileRepository @Inject constructor(
             R.drawable.materialsymbols_ic_battery_charging_full_rounded_filled,
             context.getString(R.string.tile_power_share),
         ))
+        if (SystemProperties.getBoolean("persist.sys.battery_bypass_supported", false)) {
+            add(platformTile(
+                AxPlatformClient.FEATURE_BYPASS_CHARGING,
+                R.drawable.materialsymbols_ic_battery_charging_full_rounded_filled,
+                context.getString(R.string.bypass_charge_enabled_title),
+            ))
+        }
         add(platformTile(
             AxPlatformClient.FEATURE_CAFFEINE,
             R.drawable.materialsymbols_ic_local_cafe_rounded_filled,
